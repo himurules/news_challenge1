@@ -1,0 +1,23 @@
+{
+    "name": "himanshukotnala/news",
+    "authors": [
+        {
+            "name": "himanshukotnala",
+            "email": "himanshu.kotnala@gmail.com"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "TDD\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "TDD\\Test\\": "tests/"
+        }
+    }
+}
