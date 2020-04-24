@@ -67,10 +67,8 @@ class PokerHand
      */
     public function checkStraight(array $h)
     {
-        $c = array_map(function($v){return $this->_r[(strlen($v) == 3 ? 10 : $v[0])];}, $h);
+        $c =array_map(function($v){return $this->_r[(strlen($v) == 3 ? 10 : $v[0])];}, $h);
         sort($c);
-        return ([2,3,4,5,14] === $c) ?
-            1 : ($c == range($c[0], $c[4]) ?
-                1 : 0);
+        return ([2,3,4,5,14] === $c)?1:($c==range($c[0],$c[4])?1:0);
     }
 }
