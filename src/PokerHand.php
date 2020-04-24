@@ -15,7 +15,7 @@ class PokerHand
      *
      * @var array
      */
-    private $_rank = [
+    private $_r = [
         'a'=>14,
         '2'=>2,
         '3'=>3,
@@ -47,9 +47,9 @@ class PokerHand
         $hand = [];
         for ($i=0;$i<5;$i++) {
             $hand[] = array_search(
-                $this->_rank[
-                array_rand($this->_rank, 1)
-                ], $this->_rank
+                $this->_r[
+                array_rand($this->_r, 1)
+                ], $this->_r
             ).
             $this->_suit[
                 array_rand($this->_suit, 1)
@@ -67,15 +67,10 @@ class PokerHand
      */
     public function checkStraight(array $h)
     {
-        $c = [];
-        for ($i=0; $i<count($h); $i++) {
-            $ch = substr($h[$i], 0, 1);
-            $c[] += strlen($h[$i]) == 3 ?
-                10 : $this->_rank[$ch];
-        }
+        $c = array_map(function($v){return $this->_r[(strlen($v) == 3 ? 10 : $v[0])];}, $h);
         sort($c);
         return ([2,3,4,5,14] === $c) ?
-            true : ($c == range($c[0], $c[4]) ?
-                true : false);
+            1 : ($c == range($c[0], $c[4]) ?
+                1 : 0);
     }
 }
